@@ -70,12 +70,18 @@ app.get("/users", async (request,response)=>{
     response.json(result.rows);
 });
 
-app.post("/user",async(request,response)=>{
+app.post("/user", async (request, response) => {
     const username = request.body.username;
     const email = request.body.email;
-  await db.query(`INSERT INTO users(username ,email) VALUES($1,$2)`,[username,email]);
-    response.json({success:true});
+    try {
+        await db.query("INSERT INTO users (username, email) VALUES ($1, $2)", [username, email]);
+        response.json({ success: true });
+    } catch (error) {
+        console.error("Error inserting user:", error);
+        response.status(500).json({ success: false, error: "Internal server error" });
+    }
 });
+
 app.get('/categories', async (request, response) => {
       const result = await db.query('SELECT * FROM categories');
       response.json(result.rows);
