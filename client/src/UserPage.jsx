@@ -15,6 +15,7 @@ export default function UserPage() {
     setUsers(data);
   }
 
+
   async function handleShowUsers() {
     await getUsers();
     setShowUsers(true);

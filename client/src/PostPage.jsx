@@ -27,7 +27,7 @@ export default function PostPage() {
       <button onClick={handleShowPosts}>Show Facts</button>
       {showPosts && (
         <div>
-          <PostForm />
+        
           {posts.map((post, index) => (
             <div key={index}>
               <h2>Fact Title :{post.title}</h2>
