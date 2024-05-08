@@ -23,15 +23,16 @@ export default function PostPage() {
   return (
     <div className="PostPage">
       <h1>Explore Facts</h1>
+      <PostForm />
       <button onClick={handleShowPosts}>Show Facts</button>
       {showPosts && (
         <div>
           <PostForm />
           {posts.map((post, index) => (
             <div key={index}>
-              <h2>{post.title}</h2>
-              <p>{post.content}</p>
-              <a href={post.link} target="_blank">Source</a> 
+              <h2>Fact Title :{post.title}</h2>
+              <p> Fact:{post.content}</p>
+              <a href={post.link} target="_blank">Source of the fact</a> 
             </div>
           ))}
         </div>

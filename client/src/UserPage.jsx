@@ -31,8 +31,8 @@ export default function UserPage() {
         
           { users.map((user) => (
             <div key={user.id}>
-              <h2>{user.username}</h2>
-              <p>{user.email}</p>
+              <h2>Fact provider :{user.username}</h2>
+              <p>Email :{user.email}</p>
               <p>Explore the fascinating facts shared by {user.username}!</p>
             </div>
           ))}
