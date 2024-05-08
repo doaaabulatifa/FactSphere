@@ -6,7 +6,7 @@ export default function UserForm({ onUserAdded }) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const response = await fetch("http://localhost:8080/user", {
+    const response = await fetch("https://factsphere.onrender.com/user", {
       method: "POST",
       body: JSON.stringify(form),
       headers: {

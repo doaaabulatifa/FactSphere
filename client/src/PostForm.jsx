@@ -9,14 +9,14 @@ export default function PostForm() {
   }, []);
 
   async function fetchCategories() {
-    const response = await fetch("http://localhost:8080/categories");
+    const response = await fetch("https://factsphere.onrender.com/categories");
     const data = await response.json();
     setCategories(data);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    fetch("http://localhost:8080/post", {
+    fetch("https://factsphere.onrender.com/post", {
       method: "POST",
       body: JSON.stringify(post),
       headers: {

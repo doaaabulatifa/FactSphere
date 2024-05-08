@@ -11,7 +11,7 @@ export default function PostPage() {
   }, []);
 
   async function getPosts() {
-    const response = await fetch("http://localhost:8080/posts");
+    const response = await fetch("https://factsphere.onrender.com/posts");
     const data = await response.json();
     setPosts(data);
   }

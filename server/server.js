@@ -70,11 +70,11 @@ app.get("/users", async (request,response)=>{
     response.json(result.rows);
 });
 
-app.post("/user",async(request,respone)=>{
+app.post("/user",async(request,response)=>{
     const username = request.body.username;
     const email = request.body.email;
   await db.query(`INSERT INTO users(username ,email) VALUES($1,$2)`,[username,email]);
-    respone.json({success:true});
+    response.json({success:true});
 });
 app.get('/categories', async (request, response) => {
       const result = await db.query('SELECT * FROM categories');

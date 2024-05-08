@@ -10,7 +10,7 @@ export default function UserPage() {
   }, []);
 
  async function getUsers() {
-    const response = await fetch("http://localhost:8080/users");
+    const response = await fetch("https://factsphere.onrender.com/users");
     const data = await response.json();
     setUsers(data);
   }
