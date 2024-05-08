@@ -70,24 +70,13 @@ app.get("/users", async (request,response)=>{
     response.json(result.rows);
 });
 
-app.post("/user", async (req, res) => {
-    const { username, email, titles, contents, links, category_names } = req.body;
-
-    const userQuery = await db.query(
-        `INSERT INTO users(username, email) VALUES($1, $2) RETURNING id`,
-        [username, email]
-    );
-    const userId = userQuery.rows[0].id;
-
-    for (let i = 0; i < titles.length; i++) {
-        await db.query(
-            `INSERT INTO posts(title, content, link, category_id, user_id) VALUES($1, $2, $3, (SELECT id FROM categories WHERE category_name = $4), $5)`,
-            [titles[i], contents[i], links[i], category_names[i], userId]
-        );
-    }
-
-    res.json({ success: true });
+app.post("/user", async (request, response) => {
+    const username = request.body.username;
+    const email = request.body.email;
+    await db.query(`INSERT INTO users(username ,email) VALUES($1,$2)`, [username, email]);
+    response.json({ success: true });
 });
+
 
 app.get('/categories', async (request, response) => {
       const result = await db.query('SELECT * FROM categories');
